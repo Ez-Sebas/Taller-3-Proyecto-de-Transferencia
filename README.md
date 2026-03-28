@@ -21,7 +21,20 @@ gestion-usuarios/
 ```
 
 ## ▶️ Instalación:
-Pasos claros para configurar el entorno y ejecutar el proyecto.
+
+1. Clona el repositorio:
+   ```bash
+   git clone <url-del-repositorio>
+   cd taller3_python
+   ```
+2. Instala las dependencias:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Ejecuta el programa:
+   ```bash
+   python src/main.py
+   ```
 
 ## 💻 Uso:
 Ejemplos de cómo utilizar la aplicación o biblioteca.
