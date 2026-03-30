@@ -2,6 +2,7 @@
 # Módulo de validaciones para los campos de un usuario
 
 import re
+
 from colorama import init, Fore, Style, Back
 init(autoreset=True)
 

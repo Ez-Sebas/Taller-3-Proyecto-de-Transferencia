@@ -8,11 +8,14 @@ from validate import (
     validar_edad,
     validar_estado,
 )
+
 from colorama import init, Fore, Style, Back
 init(autoreset=True)
 
-usuarios = []            # Lista de diccionarios: cada elemento es un usuario
-ids_registrados = set()  # Set para garantizar IDs únicos
+from file import load_data, save_data
+
+usuarios = load_data()  # Lista de diccionarios: cada elemento es un usuario
+ids_registrados = set([u["id"]for u in usuarios])  # Set para garantizar IDs únicos
 
 
 def crear_usuario(id, nombre, correo, edad, estado):
@@ -57,6 +60,8 @@ def crear_usuario(id, nombre, correo, edad, estado):
     # Guardar en la lista y registrar el ID en el set
     usuarios.append(nuevo_usuario)
     ids_registrados.add(id_val)
+    
+    save_data(usuarios)
 
     return True, Fore.GREEN +  f"Usuario '{nombre_val}' creado exitosamente."
 
