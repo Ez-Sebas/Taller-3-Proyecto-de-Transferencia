@@ -5,7 +5,7 @@ import os
 from colorama import init, Fore, Style, Back
 init(autoreset=True)
 
-ruta = "data/registros.json"
+ruta = "data/records.json"
 
 def load_data():
     try:

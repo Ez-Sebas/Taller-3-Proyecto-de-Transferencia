@@ -37,7 +37,30 @@ gestion-usuarios/
    ```
 
 ## 💻 Uso:
-Ejemplos de cómo utilizar la aplicación o biblioteca.
+
+Al ejecutar el programa, se mostrará un menú interactivo en consola:
+
+1. Crear usuario
+2. Listar usuarios
+3. Buscar usuario
+4. Actualizar usuario
+5. Eliminar usuario
+0. Salir
+
+Flujo básico:
+   Crear un usuario ingresando:
+   - ID
+   - Nombre
+   - Correo
+   - Edad
+   - Estado
+
+   Consultar usuarios registrados
+   Buscar un usuario por su ID
+   Actualizar los datos de un usuario existente
+   Eliminar un usuario
+
+El sistema mostrará mensajes claros indicando si la operación fue exitosa o si ocurrió algún error.
 
 ## 👤 Créditos/Autores:
 Sebastián Zuleta Echavarría — Ficha 3406211
