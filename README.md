@@ -48,17 +48,17 @@ Al ejecutar el programa, se mostrará un menú interactivo en consola:
 0. Salir
 
 Flujo básico:
-   Crear un usuario ingresando:
+   1. Crear un usuario ingresando:
    - ID
    - Nombre
    - Correo
    - Edad
    - Estado
 
-   Consultar usuarios registrados
-   Buscar un usuario por su ID
-   Actualizar los datos de un usuario existente
-   Eliminar un usuario
+   2. Consultar usuarios registrados
+   3. Buscar un usuario por su ID
+   4. Actualizar los datos de un usuario existente
+   5. Eliminar un usuario
 
 El sistema mostrará mensajes claros indicando si la operación fue exitosa o si ocurrió algún error.
 

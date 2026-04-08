@@ -28,26 +28,26 @@ def new_register(id, nombre, correo, edad, estado):
     ok, id_val = validar_id(id, ids_registrados)
     if not ok:
         errores.append(id_val)
-
+        
     ok, nombre_val = validar_nombre(nombre)
     if not ok:
         errores.append(nombre_val)
-
+        
     ok, correo_val = validar_correo(correo)
     if not ok:
         errores.append(correo_val)
-
+        
     ok, edad_val = validar_edad(edad)
     if not ok:
         errores.append(edad_val)
-
+        
     ok, estado_val = validar_estado(estado)
     if not ok:
         errores.append(estado_val)
         
     if errores:
         return False, errores
-
+    
     # Construir el diccionario del usuario
     nuevo_usuario = {
         "id": id_val,
@@ -56,13 +56,13 @@ def new_register(id, nombre, correo, edad, estado):
         "edad": edad_val,
         "estado": estado_val,
     }
-
+    
     # Guardar en la lista y registrar el ID en el set
     usuarios.append(nuevo_usuario)
     ids_registrados.add(id_val)
     
     save_data(usuarios)
-
+    
     return True, Fore.GREEN +  f"Usuario '{nombre_val}' creado exitosamente."
 
 
@@ -79,8 +79,9 @@ def list_records():
     for u in usuarios_ordenados:
         linea = f"[{u['id']}] {u['nombre']} | {u['correo']} | Edad: {u['edad']} | Estado: {u['estado']}"
         resumen.append(linea)
-
+        
     return resumen
+
 
 def search_record(id):
     try:
@@ -98,6 +99,7 @@ def search_record(id):
     info = f"[{u['id']}] {u['nombre']} | {u['correo']} | Edad: {u['edad']} | Estado: {u['estado']}"
     return True, info
 
+
 def update_record(id, nombre, correo, edad, estado):
     try:
         id = int(id)
@@ -109,25 +111,25 @@ def update_record(id, nombre, correo, edad, estado):
     
     for u in usuarios:
         if u["id"] == id:
-
+            
             errores = []
-
+            
             ok, nombre_val = validar_nombre(nombre)
             if not ok:
                 errores.append(nombre_val)
-
+                
             ok, correo_val = validar_correo(correo)
             if not ok:
                 errores.append(correo_val)
-
+                
             ok, edad_val = validar_edad(edad)
             if not ok:
                 errores.append(edad_val)
-
+                
             ok, estado_val = validar_estado(estado)
             if not ok:
                 errores.append(estado_val)
-
+                
             if errores:
                 return False, errores
             
@@ -135,12 +137,13 @@ def update_record(id, nombre, correo, edad, estado):
             u["correo"] = correo_val
             u["edad"] = edad_val
             u["estado"] = estado_val
-
+            
             save_data(usuarios)
-
+            
             return True, Fore.GREEN + "Usuario actualizado correctamente."
-
+        
     return False, Fore.RED + "Error: ID no existe."
+
 
 def delete_record(id):
     try:
@@ -154,9 +157,9 @@ def delete_record(id):
         return False, Fore.RED + "Error: ID no existe."
     
     usuarios = [u for u in usuarios if u["id"] != id]
-
+    
     ids_registrados.remove(id)
-
+    
     save_data(usuarios)
-
+    
     return True, Fore.GREEN + "Usuario eliminado correctamente."

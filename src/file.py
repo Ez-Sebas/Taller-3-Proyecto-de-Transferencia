@@ -7,6 +7,7 @@ init(autoreset=True)
 
 ruta = "data/records.json"
 
+
 def load_data():
     try:
         if not os.path.exists(ruta):
@@ -20,7 +21,8 @@ def load_data():
     except json.JSONDecodeError:
         print(Fore.YELLOW + f"El archivo {ruta} esta dañado")
         return []
-        
+
+
 def save_data(data):
     try:
         with open(ruta, "w", encoding="utf-8") as f:

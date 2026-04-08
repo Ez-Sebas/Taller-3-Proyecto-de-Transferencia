@@ -9,23 +9,23 @@ def calculate_sale_total(sale: dict) -> float:
     # Si la venta no es válida se lanza una excepción antes de calcular nada
     if sale["status"] != "ok":
         raise ValueError(f"Venta inválida: {sale}")
-
+    
     price = sale["price"]
     quantity = sale["quantity"] 
     discount = 0
-
+    
     # Si la cantidad es mayor o igual a 10 se aplica un descuento del 10%
     if quantity >= 10:
         discount = 0.1
-
+        
     # Si el cliente es vip se suma un 5% adicional al descuento ya calculado
     if sale["customer"] == "vip":
         discount = discount + 0.05
-
+        
     # Se calcula el subtotal y se le aplica el descuento total acumulado
     subtotal = price * quantity
     subtotal = subtotal - (subtotal * discount)
-
+    
     return subtotal
 
 
@@ -34,11 +34,11 @@ def calculate_total(sales: list) -> float:
     Recorre una lista de ventas válidas y retorna la suma total.
     """
     total = 0
-
+    
     # Suma el resultado de cada venta llamando a calculate_sale_total
     for sale in sales:
         total = total + calculate_sale_total(sale)
-
+        
     return total
 
 

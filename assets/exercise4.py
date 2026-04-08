@@ -31,6 +31,6 @@ def calc(a, b, op):
         
         func = ops.get(op)
         return func(a, b) if func else None
-
+    
 result = calc(a, b, op)
 print("El resultado de", op, "es:", result)

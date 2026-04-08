@@ -16,14 +16,18 @@
 def tiene_longitud_minima(contrasena: str) -> bool:
     return len(contrasena) >= 8
 
+
 def tiene_mayuscula(contrasena: str) -> bool:
     return any(c.isupper() for c in contrasena)
+
 
 def tiene_numero(contrasena: str) -> bool:
     return any(c.isdigit() for c in contrasena)
 
+
 def no_tiene_espacios(contrasena: str) -> bool:
     return " " not in contrasena
+
 
 def obtener_errores(contrasena: str) -> list:
     errores = []
@@ -39,8 +43,10 @@ def obtener_errores(contrasena: str) -> list:
         
     return errores
 
+
 def validar_contrasena(contrasena: str) -> bool:
     return len(obtener_errores(contrasena)) == 0
+
 
 def main():
     contrasena = input("Ingrese una Contraseña: ")
@@ -52,6 +58,7 @@ def main():
         print("Contraseña Inválida. Aspectos que no se Cumplen:")
         for error in errores:
             print(f"  - {error}")
-            
+
+
 if __name__ == "__main__":
     main()
