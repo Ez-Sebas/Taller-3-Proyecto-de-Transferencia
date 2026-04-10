@@ -51,9 +51,9 @@ def validar_edad(edad):
     """
     try:
         edad = int(edad)
-        if edad < 1 or edad > 100:
-            return False, Fore.YELLOW + "La edad debe estar entre 1 y 100 años."
-        return True, edad
+        if 18 <= edad <= 100:
+            return True, edad
+        return False, Fore.YELLOW + "La edad debe estar entre 18 y 100 años."
     except ValueError:
         return False, Fore.YELLOW + "La edad debe ser un número entero."
 
@@ -61,5 +61,7 @@ def validar_edad(edad):
 def validar_estado(estado):
     if estado == "Activo":
         return True, estado
+    elif estado == "Inactivo":
+        return True, estado
     else:
-        return True, "Inactivo"
+        return False, Fore.YELLOW + "El estado debe ser 'Activo' o 'Inactivo'."

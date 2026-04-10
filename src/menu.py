@@ -1,7 +1,8 @@
 # menu.py
 # Punto de entrada del programa — Módulo 1
 
-from service import new_register, list_records, search_record, update_record, delete_record
+from service import new_register, list_records, search_record, update_record, delete_record, delete_all
+from integration import generar_datos_falsos
 from colorama import init, Fore, Style, Back
 
 init(autoreset=True)
@@ -16,6 +17,7 @@ def mostrar_menu():
     print(Fore.YELLOW + "  3. Buscar usuario")
     print(Fore.YELLOW + "  4. Actualizar usuario")
     print(Fore.YELLOW + "  5. Eliminar usuario")
+    print(Fore.YELLOW + "  6. Generar datos falsos")
     print(Fore.YELLOW +"  0. Salir")
     print(Fore.RED +"========================================")
 
@@ -82,10 +84,37 @@ def actualizar_usuario():
     if exito:
         print(Fore.GREEN + f"\n {mensaje}")
     else:
-        print(Fore.RED + "\n Se encontraron los siguientes errores:")
-        for error in mensaje:
-            print(f"   • {error}")
+        print(Fore.RED + f"\n {mensaje}")
 
+
+def menu_eliminar():
+    print("\n" + Fore.RED + "========================================")
+    print(Fore.YELLOW + "ELIMINAR USUARIOS")
+    print(Fore.RED +"========================================")
+    print(Fore.YELLOW + "  1. Eliminar por ID")
+    print(Fore.YELLOW + "  2. Eliminar todos los usuarios")
+    print(Fore.YELLOW + "  0. Volver")
+    print(Fore.RED +"========================================")
+
+def main_eliminar():
+    while True:
+        menu_eliminar()
+        
+        try:
+            opcion = input("Elige una opción: ").strip()
+        except KeyboardInterrupt:
+            print("\n\nPrograma interrumpido. ¡Hasta luego!")
+            break
+        
+        if opcion == "1":
+            eliminar_usuario()
+        elif opcion == "2":
+            eliminar_todo()
+        elif opcion == "0":
+            print("\nVolviendo al menú principal...")
+            break
+        else:
+            print("\n Opción no válida. Intenta de nuevo.")
 
 def eliminar_usuario():
     """Pide el ID del usuario a eliminar."""
@@ -98,6 +127,26 @@ def eliminar_usuario():
     else:
         print(Fore.RED + f"\n {mensaje}")
 
+
+def eliminar_todo():
+    
+    confirmacion = input(Fore.YELLOW + "¿Estás seguro que quieres eliminar TODOS los usuarios? (s/n): ").strip().lower()
+    
+    if confirmacion == "s":
+        exito, mensaje = delete_all()
+        
+        if exito:
+            print(Fore.GREEN + f"\n {mensaje}")
+        else:
+            print(Fore.RED + f"\n {mensaje}")
+
+def datos_falsos():
+    exito, mensaje = generar_datos_falsos(cantidad=10)
+    
+    if exito:
+        print(Fore.GREEN + f"\n {mensaje}")
+    else:
+        print(Fore.RED + f"\n {mensaje}")
 
 def main():
     print("Sistema listo")
@@ -120,7 +169,9 @@ def main():
         elif opcion == "4":
             actualizar_usuario()
         elif opcion == "5":
-            eliminar_usuario()
+            main_eliminar()
+        elif opcion == "6":
+            datos_falsos()
         elif opcion == "0":
             print("\n¡Hasta luego!")
             break

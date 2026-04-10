@@ -70,12 +70,13 @@ def list_records():
     """
     Retorna una lista de strings con el resumen de cada usuario.
     """
-    if not usuarios:
+    datos = load_data()
+    if not datos:
         return []
     
-    usuarios_ordenados = sorted(usuarios, key=lambda u: u["nombre"])
-    
+    usuarios_ordenados = sorted(datos, key=lambda u: u["nombre"])
     resumen = []
+    
     for u in usuarios_ordenados:
         linea = f"[{u['id']}] {u['nombre']} | {u['correo']} | Edad: {u['edad']} | Estado: {u['estado']}"
         resumen.append(linea)
@@ -163,3 +164,15 @@ def delete_record(id):
     save_data(usuarios)
     
     return True, Fore.GREEN + "Usuario eliminado correctamente."
+
+def delete_all():
+    global usuarios
+    
+    if not usuarios:
+        return False, Fore.YELLOW + "No hay usuarios para eliminar."
+    else:
+        usuarios.clear()
+        ids_registrados.clear()
+        save_data(usuarios)
+    
+    return True, Fore.GREEN + "Todos los usuarios eliminados correctamente."
