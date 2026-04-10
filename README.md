@@ -85,11 +85,11 @@ El sistema mostrará mensajes claros indicando si la operación fue exitosa o si
  
 ## 📸 Screenshots
  
-![Menu principal](assets/images/menu.pngmenu.png)
+![Menu principal](assets/images/menu.png)
 ![Crear usuario](assets/images/crear.png)
-![Listar usuarios](assets/images/listar.pnglistar.png)
-![Generar datos falsos](assets/images/faker.pngfaker.png)
-![Listar después de Faker](assets/images/listFaker.pnglistFaker.png)
+![Listar usuarios](assets/images/listar.png)
+![Generar datos falsos](assets/images/faker.png)
+![Listar después de Faker](assets/images/listFaker.png)
  
 ## 👤 Datos del Autor
  
