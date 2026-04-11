@@ -33,14 +33,18 @@ taller3_python/
 │     ├─ faker.png
 │     └─ listFaker.png
 ├─ data/
-│  └─ records.json                  # archivo de persistencia
-└─ src/
-      ├─ main.py                    # punto de entrada
-      ├─ menu.py                    # interfaz de consola (UI)
-      ├─ service.py                 # lógica (CRUD)
-      ├─ file.py                    # persistencia (leer/guardar)
-      ├─ validate.py                # validaciones y helpers
-      └─ integration.py             # generación de datos con Faker
+│  └─ records.json               # archivo de persistencia
+├─ src/
+│  ├─ main.py                    # punto de entrada
+│  ├─ menu.py                    # interfaz de consola (UI)
+│  ├─ service.py                 # lógica (CRUD)
+│  ├─ file.py                    # persistencia (leer/guardar)
+│  ├─ validate.py                # validaciones y helpers
+│  └─ integration.py             # generación de datos con Faker
+│
+└─ tests/
+│  ├─ __init__.py
+│  ├─ test_validate.py
 ```
  
 ## ▶️ Instalación:
@@ -58,7 +62,16 @@ taller3_python/
    ```bash
    python src/main.py
    ```
- 
+
+## 🧪 Pruebas
+
+Para ejecutar las pruebas del proyecto:
+
+```bash
+pytest tests/
+```
+
+Se correrán 4 pruebas automáticas sobre las validaciones del sistema.
 ## 💻 Uso:
  
 Al ejecutar el programa, se mostrará un menú interactivo en consola:

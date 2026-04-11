@@ -1,6 +1,3 @@
-# menu.py
-# Punto de entrada del programa — Módulo 1
-
 from service import new_register, list_records, search_record, update_record, delete_record, delete_all
 from integration import generar_datos_falsos
 from colorama import init, Fore, Style, Back
@@ -8,7 +5,10 @@ from colorama import init, Fore, Style, Back
 init(autoreset=True)
 
 
-def mostrar_menu():
+def mostrar_menu() -> None:
+    """
+    Muestra el menú principal en consola.
+    """
     print("\n" + Fore.RED + "========================================")
     print(Fore.YELLOW + "SISTEMA DE GESTIÓN DE USUARIOS")
     print(Fore.RED +"========================================")
@@ -22,10 +22,10 @@ def mostrar_menu():
     print(Fore.RED +"========================================")
 
 
-def solicitar_usuario():
-    
-    """Pide los datos del nuevo usuario por consola y llama a crear_usuario."""
-    
+def solicitar_usuario() -> None:
+    """
+    Pide los datos del nuevo usuario por consola y llama a crear_usuario.
+    """
     print(Fore.RED +"\n── Nuevo usuario ──")
     id_input = input(Fore.GREEN + "ID: ").strip()
     nombre_input = input(Fore.GREEN + "Nombre: ").strip()
@@ -43,10 +43,10 @@ def solicitar_usuario():
             print(f"   • {error}")
 
 
-def mostrar_usuarios():
-    
-    """Lista todos los usuarios registrados en memoria."""
-    
+def mostrar_usuarios() -> None:
+    """
+    Lista todos los usuarios registrados en memoria.
+    """
     print(Fore.YELLOW + "\n── Usuarios registrados ──")
     resumen = list_records()
     
@@ -57,9 +57,10 @@ def mostrar_usuarios():
             print(" •", linea)
 
 
-def buscar_usuario():
-    """Busca usuario por ID e imprime su información."""
-    
+def buscar_usuario()  -> None:
+    """
+    Busca usuario por ID e imprime su información.
+    """
     id_input = input(Fore.GREEN + "ID: ").strip()
     exito, mensaje = search_record(id_input)
     
@@ -69,10 +70,10 @@ def buscar_usuario():
         print(Fore.RED + f"\n {mensaje}")
 
 
-def actualizar_usuario():
-    
-    """Pide el ID del usuario a actualizar y los nuevos datos."""
-    
+def actualizar_usuario() -> None:
+    """
+    Pide el ID del usuario a actualizar y los nuevos datos.
+    """
     id_input = input(Fore.GREEN + "ID: ").strip()
     nombre_input = input(Fore.GREEN + "Nombre: ").strip()
     correo_input = input(Fore.GREEN + "Correo: ").strip()
@@ -87,7 +88,10 @@ def actualizar_usuario():
         print(Fore.RED + f"\n {mensaje}")
 
 
-def menu_eliminar():
+def menu_eliminar() -> None:
+    """
+    Muestra el submenú de eliminación en consola.
+    """
     print("\n" + Fore.RED + "========================================")
     print(Fore.YELLOW + "ELIMINAR USUARIOS")
     print(Fore.RED +"========================================")
@@ -96,7 +100,11 @@ def menu_eliminar():
     print(Fore.YELLOW + "  0. Volver")
     print(Fore.RED +"========================================")
 
-def main_eliminar():
+
+def main_eliminar() -> None:
+    """
+    Controla el flujo del submenú de eliminación.
+    """
     while True:
         menu_eliminar()
         
@@ -116,9 +124,11 @@ def main_eliminar():
         else:
             print("\n Opción no válida. Intenta de nuevo.")
 
-def eliminar_usuario():
-    """Pide el ID del usuario a eliminar."""
-    
+
+def eliminar_usuario() -> None:
+    """
+    Pide el ID del usuario a eliminar.
+    """
     id_input = input(Fore.GREEN + "ID: ").strip()
     exito, mensaje = delete_record(id_input)
     
@@ -128,8 +138,10 @@ def eliminar_usuario():
         print(Fore.RED + f"\n {mensaje}")
 
 
-def eliminar_todo():
-    
+def eliminar_todo() -> None:
+    """
+    Solicita confirmación y elimina todos los usuarios.
+    """
     confirmacion = input(Fore.YELLOW + "¿Estás seguro que quieres eliminar TODOS los usuarios? (s/n): ").strip().lower()
     
     if confirmacion == "s":
@@ -140,7 +152,11 @@ def eliminar_todo():
         else:
             print(Fore.RED + f"\n {mensaje}")
 
-def datos_falsos():
+
+def datos_falsos() -> None:
+    """
+    Llama a la función de generación de datos falsos y muestra el resultado.
+    """
     exito, mensaje = generar_datos_falsos(cantidad=10)
     
     if exito:
@@ -148,7 +164,11 @@ def datos_falsos():
     else:
         print(Fore.RED + f"\n {mensaje}")
 
-def main():
+
+def main() -> None:
+    """
+    Función principal que inicia el programa y controla el menú.
+    """
     print("Sistema listo")
     
     while True:

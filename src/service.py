@@ -1,6 +1,3 @@
-# service.py
-# Módulo de lógica de negocio para la gestión de usuarios en memoria
-
 from validate import (
     validar_id,
     validar_nombre,
@@ -18,7 +15,7 @@ usuarios = load_data()  # Lista de diccionarios: cada elemento es un usuario
 ids_registrados = set([u["id"] for u in usuarios])  # Set para garantizar IDs únicos
 
 
-def new_register(id, nombre, correo, edad, estado):
+def new_register(id: str, nombre: str, correo: str, edad: str, estado: str) -> tuple:
     """
     Recibe los campos del usuario, los valida y los guarda en memoria.
     """
@@ -66,7 +63,7 @@ def new_register(id, nombre, correo, edad, estado):
     return True, Fore.GREEN +  f"Usuario '{nombre_val}' creado exitosamente."
 
 
-def list_records():
+def list_records() -> list:
     """
     Retorna una lista de strings con el resumen de cada usuario.
     """
@@ -84,7 +81,10 @@ def list_records():
     return resumen
 
 
-def search_record(id):
+def search_record(id: str) -> tuple:
+    """
+    Busca y retorna un usuario por su ID.
+    """
     try:
         id = int(id)
     except ValueError:
@@ -101,7 +101,10 @@ def search_record(id):
     return True, info
 
 
-def update_record(id, nombre, correo, edad, estado):
+def update_record(id: str, nombre: str, correo: str, edad: str, estado: str) -> tuple:
+    """
+    Actualiza los datos de un usuario existente por su ID.
+    """
     try:
         id = int(id)
     except ValueError:
@@ -146,7 +149,10 @@ def update_record(id, nombre, correo, edad, estado):
     return False, Fore.RED + "Error: ID no existe."
 
 
-def delete_record(id):
+def delete_record(id: str) -> tuple:
+    """
+    Elimina un usuario de la lista por su ID.
+    """
     try:
         id = int(id)
     except ValueError:
@@ -165,7 +171,11 @@ def delete_record(id):
     
     return True, Fore.GREEN + "Usuario eliminado correctamente."
 
-def delete_all():
+
+def delete_all() -> tuple:
+    """
+    Elimina todos los usuarios registrados.
+    """
     global usuarios
     
     if not usuarios:

@@ -1,13 +1,10 @@
-# validate.py
-# Módulo de validaciones para los campos de un usuario
-
 import re
 
 from colorama import init, Fore, Style, Back
 init(autoreset=True)
 
 
-def validar_id(id_usuario, ids_existentes):
+def validar_id(id_usuario: str, ids_existentes: set) -> tuple:
     """
     Valida que el ID sea un número entero positivo y que no esté repetido.
     """
@@ -22,7 +19,7 @@ def validar_id(id_usuario, ids_existentes):
         return False, Fore.YELLOW + "El ID debe ser un número entero."
 
 
-def validar_nombre(nombre):
+def validar_nombre(nombre: str) -> tuple:
     """
     Valida que el nombre no esté vacío y solo contenga letras y espacios.
     """
@@ -34,7 +31,7 @@ def validar_nombre(nombre):
     return True, nombre
 
 
-def validar_correo(correo):
+def validar_correo(correo: str) -> tuple:
     """
     Valida que el correo tenga un formato básico válido: algo@algo.algo
     """
@@ -45,9 +42,9 @@ def validar_correo(correo):
     return True, correo
 
 
-def validar_edad(edad):
+def validar_edad(edad: str) -> tuple:
     """
-    Valida que la edad sea un número entero entre 1 y 120.
+    Valida que la edad sea un número entero entre 18 y 100.
     """
     try:
         edad = int(edad)
@@ -58,7 +55,10 @@ def validar_edad(edad):
         return False, Fore.YELLOW + "La edad debe ser un número entero."
 
 
-def validar_estado(estado):
+def validar_estado(estado: str) -> tuple:
+    """
+    Valida que el estado sea 'Activo' o 'Inactivo'.
+    """
     if estado == "Activo":
         return True, estado
     elif estado == "Inactivo":

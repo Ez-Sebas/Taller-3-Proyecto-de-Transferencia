@@ -4,7 +4,10 @@ fake = Faker("es_CO")
 from file import load_data, save_data
 import random
 
-def generar_datos_falsos(**kwargs):
+def generar_datos_falsos(**kwargs) -> tuple:
+    """
+    Genera usuarios falsos usando Faker y los guarda en el archivo JSON.
+    """
     
     datos_existentes = load_data()
     

@@ -8,7 +8,10 @@ init(autoreset=True)
 ruta = "data/records.json"
 
 
-def load_data():
+def load_data() -> list:
+    """
+    Carga y retorna los datos desde el archivo JSON.
+    """
     try:
         if not os.path.exists(ruta):
             return[]
@@ -23,7 +26,10 @@ def load_data():
         return []
 
 
-def save_data(data):
+def save_data(data: list) -> None:
+    """
+    Guarda la lista de usuarios en el archivo JSON.
+    """
     try:
         with open(ruta, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
